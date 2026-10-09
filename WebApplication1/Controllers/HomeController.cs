@@ -8,7 +8,14 @@ namespace WebApplication1.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            Student student = new Student()
+            {
+                Id = 1,
+                Name = "abhishek",
+                Age = 25,
+                Birthday = 1998
+            };
+            return View(student);
         }
         public IActionResult AboutUs()
         {

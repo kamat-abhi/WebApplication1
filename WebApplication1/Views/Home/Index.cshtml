@@ -1,8 +1,13 @@
-﻿@{
+﻿@model WebApplication1.Models.Student
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Home Page</h1>
     <p>Home Page of Our Web Site</p>
+    <p><strong>ID:</strong> @Model.Id</p>
+    <p><strong>Name:</strong> @Model.Name</p>
+    <p><strong>Age:</strong> @Model.Age</p>
+    <p><strong>Birthday:</strong> @Model.Birthday</p>
 </div>
