@@ -21,21 +21,25 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult ContactUs()
         {
-            return View();
+            return View(new ContactModel());
         }
 
         [HttpPost]
-        public IActionResult ShowData(
-            string Name,
-            string Email,
-            string Subject,
-            string Message)
+        public IActionResult ShowData(ContactModel model)
         {
-            ModelState.Clear();
+            if (!ModelState.IsValid)
+            {
+                return View("ContactUs", model);
+            }
+
             ViewBag.Success = "Your message has been submitted!";
-            return View("ContactUs");
+
+            ModelState.Clear();
+
+            return View("ContactUs", new ContactModel());
         }
         public IActionResult Default()
         {

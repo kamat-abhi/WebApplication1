@@ -1,4 +1,6 @@
-﻿@{
+﻿@model WebApplication1.Models.ContactModel
+
+@{
     ViewData["Title"] = "Contact Us Page";
     ViewData["HideImage"] = true;
 }
@@ -8,6 +10,7 @@
         <div class="col-lg-4 col-md-6 col-sm-12">
 
             <h2>Contact Us</h2>
+
             @if (ViewBag.Success != null)
             {
                 <div class="alert alert-success">
@@ -17,50 +20,75 @@
 
             @using (Html.BeginForm("ShowData", "Home", FormMethod.Post))
             {
+
                 <div class="mb-3">
-                    @Html.Label("Name", "Your Name", new { @class = "form-label" })
-                    @Html.TextBox("Name", null, new
-                    {
-                        @class = "form-control",
-                        placeholder = "Enter your name"
-                    })
+                    @Html.LabelFor(m => m.Name, "Your Name",
+                        new { @class = "form-label" })
+
+                    @Html.TextBoxFor(m => m.Name,
+                        new
+                        {
+                            @class = "form-control",
+                            placeholder = "Enter your name"
+                        })
+
+                    @Html.ValidationMessageFor(m => m.Name,
+                        "", new { @class = "text-danger" })
                 </div>
 
                 <div class="mb-3">
-                    @Html.Label("Email", "Email Address", new { @class = "form-label" })
-                    @Html.TextBox("Email", null, new
-                    {
-                        @class = "form-control",
-                        type = "email",
-                        placeholder = "Enter your email"
-                    })
+                    @Html.LabelFor(m => m.Email, "Email Address",
+                        new { @class = "form-label" })
+
+                    @Html.TextBoxFor(m => m.Email,
+                        new
+                        {
+                            @class = "form-control",
+                            type = "email",
+                            placeholder = "Enter your email"
+                        })
+
+                    @Html.ValidationMessageFor(m => m.Email,
+                        "", new { @class = "text-danger" })
                 </div>
 
                 <div class="mb-3">
-                    @Html.Label("Subject", "Subject", new { @class = "form-label" })
-                    @Html.TextBox("Subject", null, new
-                    {
-                        @class = "form-control",
-                        placeholder = "Enter subject"
-                    })
+                    @Html.LabelFor(m => m.Subject,
+                        new { @class = "form-label" })
+
+                    @Html.TextBoxFor(m => m.Subject,
+                        new
+                        {
+                            @class = "form-control",
+                            placeholder = "Enter subject"
+                        })
+
+                    @Html.ValidationMessageFor(m => m.Subject,
+                        "", new { @class = "text-danger" })
                 </div>
 
                 <div class="mb-3">
-                    @Html.Label("Message", "Your Message", new { @class = "form-label" })
-                    @Html.TextArea("Message", null, 4, 40, new
-                    {
-                        @class = "form-control",
-                        placeholder = "Write your message here"
-                    })
+                    @Html.LabelFor(m => m.Message, "Your Message",
+                        new { @class = "form-label" })
+
+                    @Html.TextAreaFor(m => m.Message, 4, 40,
+                        new
+                        {
+                            @class = "form-control",
+                            placeholder = "Write your message here"
+                        })
+
+                    @Html.ValidationMessageFor(m => m.Message,
+                        "", new { @class = "text-danger" })
                 </div>
 
                 <button type="submit" class="btn btn-primary">
                     Submit
                 </button>
             }
-
         </div>
     </div>
 </div>
+
 
 
