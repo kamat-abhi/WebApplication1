@@ -1,0 +1,162 @@
+[
+  {
+    "Id": 1,
+    "Name": "Rahul Kumar",
+    "Email": "rahul.kumar@example.com",
+    "Department": "IT",
+    "Salary": 45000,
+    "Designation": "Developer"
+  },
+  {
+    "Id": 2,
+    "Name": "Priya Sharma",
+    "Email": "priya.sharma@example.com",
+    "Department": "HR",
+    "Salary": 40000,
+    "Designation": "HR Executive"
+  },
+  {
+    "Id": 3,
+    "Name": "Amit Singh",
+    "Email": "amit.singh@example.com",
+    "Department": "Finance",
+    "Salary": 50000,
+    "Designation": "Accountant"
+  },
+  {
+    "Id": 4,
+    "Name": "Neha Verma",
+    "Email": "neha.verma@example.com",
+    "Department": "IT",
+    "Salary": 55000,
+    "Designation": "Software Engineer"
+  },
+  {
+    "Id": 5,
+    "Name": "Vikas Gupta",
+    "Email": "vikas.gupta@example.com",
+    "Department": "Sales",
+    "Salary": 35000,
+    "Designation": "Sales Executive"
+  },
+  {
+    "Id": 6,
+    "Name": "Anjali Kumariiiiii",
+    "Email": "anjali.kumari@example.com",
+    "Department": "Marketing",
+    "Salary": 42000.00,
+    "Designation": "Marketing Executive"
+  },
+  {
+    "Id": 7,
+    "Name": "Rohit Das",
+    "Email": "rohit.das@example.com",
+    "Department": "IT",
+    "Salary": 60000,
+    "Designation": "Team Lead"
+  },
+  {
+    "Id": 8,
+    "Name": "Sneha Patel",
+    "Email": "sneha.patel@example.com",
+    "Department": "Finance",
+    "Salary": 48000,
+    "Designation": "Financial Analyst"
+  },
+  {
+    "Id": 9,
+    "Name": "Karan Mehta",
+    "Email": "karan.mehta@example.com",
+    "Department": "HR",
+    "Salary": 38000,
+    "Designation": "Recruiter"
+  },
+  {
+    "Id": 10,
+    "Name": "Pooja Singh",
+    "Email": "pooja.singh@example.com",
+    "Department": "IT",
+    "Salary": 52000,
+    "Designation": "Backend Developer"
+  },
+  {
+    "Id": 11,
+    "Name": "Arjun Yadav",
+    "Email": "arjun.yadav@example.com",
+    "Department": "Operations",
+    "Salary": 47000,
+    "Designation": "Operations Executive"
+  },
+  {
+    "Id": 12,
+    "Name": "Kavita Mishra",
+    "Email": "kavita.mishra@example.com",
+    "Department": "Finance",
+    "Salary": 58000,
+    "Designation": "Senior Accountant"
+  },
+  {
+    "Id": 13,
+    "Name": "Saurabh Kumar",
+    "Email": "saurabh.kumar@example.com",
+    "Department": "IT",
+    "Salary": 65000,
+    "Designation": "Senior Developer"
+  },
+  {
+    "Id": 14,
+    "Name": "Riya Gupta",
+    "Email": "riya.gupta@example.com",
+    "Department": "Marketing",
+    "Salary": 44000,
+    "Designation": "Marketing Analyst"
+  },
+  {
+    "Id": 15,
+    "Name": "Manish Raj",
+    "Email": "manish.raj@example.com",
+    "Department": "Sales",
+    "Salary": 39000,
+    "Designation": "Sales Manager"
+  },
+  {
+    "Id": 16,
+    "Name": "Nisha Kumari",
+    "Email": "nisha.kumari@example.com",
+    "Department": "HR",
+    "Salary": 46000,
+    "Designation": "HR Manager"
+  },
+  {
+    "Id": 17,
+    "Name": "Aditya Sharma",
+    "Email": "aditya.sharma@example.com",
+    "Department": "IT",
+    "Salary": 72000,
+    "Designation": "Tech Lead"
+  },
+  {
+    "Id": 18,
+    "Name": "Swati Singh",
+    "Email": "swati.singh@example.com",
+    "Department": "Operations",
+    "Salary": 41000,
+    "Designation": "Operations Analyst"
+  },
+  {
+    "Id": 19,
+    "Name": "Deepak Verma",
+    "Email": "deepak.verma@example.com",
+    "Department": "Finance",
+    "Salary": 54000,
+    "Designation": "Financial Analyst"
+  },
+  {
+    "Id": 20,
+    "Name": "Meera Das",
+    "Email": "meera.das@example.com",
+    "Department": "IT",
+    "Salary": 59000,
+    "Designation": "Frontend Developer"
+  }
+]
