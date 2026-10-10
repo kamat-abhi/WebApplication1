@@ -4,6 +4,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [Route("Employe")]
     public class EmployeController : Controller
     {
         private readonly string filePath;
@@ -44,6 +45,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: /Employe
+        [HttpGet("")]
         public IActionResult Index()
         {
             List<Employe> employees = GetEmployees();
@@ -52,6 +54,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: /Employe/Details/5
+        [HttpGet("Details/{id?}")]
         public IActionResult Details(int id)
         {
             List<Employe> employees = GetEmployees();
@@ -67,13 +70,14 @@ namespace WebApplication1.Controllers
         }
 
         // GET: /Employe/Create
+        [HttpGet("Create")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: /Employe/Create
-        [HttpPost]
+        [HttpPost("Create")]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Employe employe)
         {
@@ -96,6 +100,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: /Employe/Edit/5
+        [HttpGet("Edit/{id?}")]
         public IActionResult Edit(int id)
         {
             List<Employe> employees = GetEmployees();
@@ -111,7 +116,7 @@ namespace WebApplication1.Controllers
         }
 
         // POST: /Employe/Edit/5
-        [HttpPost]
+        [HttpPost("Edit/{id?}")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Employe employee)
         {
@@ -147,6 +152,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: /Employe/Delete/5
+        [HttpGet("Delete/{id?}")]
         public IActionResult Delete(int id)
         {
             List<Employe> employees = GetEmployees();
@@ -162,7 +168,7 @@ namespace WebApplication1.Controllers
         }
 
         // POST: /Employe/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost("Delete/{id?}")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
