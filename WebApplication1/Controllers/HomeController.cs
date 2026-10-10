@@ -21,6 +21,22 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ShowData(
+            string Name,
+            string Email,
+            string Subject,
+            string Message)
+        {
+            ModelState.Clear();
+            ViewBag.Success = "Your message has been submitted!";
+            return View("ContactUs");
+        }
         public IActionResult Default()
         {
             return View("Index");
