@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
+using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -7,59 +7,28 @@ namespace WebApplication1.Controllers
     [Route("Employe")]
     public class EmployeController : Controller
     {
-        private readonly string filePath;
+        private readonly MyDatabaseContext _context;
 
-        public EmployeController(IWebHostEnvironment environment)
+        public EmployeController(MyDatabaseContext context)
         {
-            filePath = Path.Combine(
-                environment.ContentRootPath,
-                "Data",
-                "employes.json"
-            );
-        }
-
-        private List<Employe> GetEmployees()
-        {
-            if (!System.IO.File.Exists(filePath))
-            {
-                return new List<Employe>();
-            }
-
-            string json = System.IO.File.ReadAllText(filePath);
-
-            return JsonSerializer.Deserialize<List<Employe>>(json)
-                   ?? new List<Employe>();
-        }
-
-        private void SaveEmployees(List<Employe> employees)
-        {
-            string json = JsonSerializer.Serialize(
-                employees,
-                new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                }
-            );
-
-            System.IO.File.WriteAllText(filePath, json);
+            _context = context;
         }
 
         // GET: /Employe
         [HttpGet("")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<Employe> employees = GetEmployees();
+            List<Employe> employees = await _context.Employes.ToListAsync();
 
             return View(employees);
         }
 
         // GET: /Employe/Details/5
-        [HttpGet("Details/{id?}")]
-        public IActionResult Details(int id)
+        [HttpGet("Details/{id}")]
+        public async Task<IActionResult> Details(int id)
         {
-            List<Employe> employees = GetEmployees();
-
-            Employe? employee = employees.FirstOrDefault(e => e.Id == id);
+            Employe? employee = await _context.Employes
+                .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
             {
@@ -79,33 +48,26 @@ namespace WebApplication1.Controllers
         // POST: /Employe/Create
         [HttpPost("Create")]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Employe employe)
+        public async Task<IActionResult> Create(Employe employe)
         {
             if (!ModelState.IsValid)
             {
                 return View(employe);
             }
 
-            List<Employe> employes = GetEmployees();
+            _context.Employes.Add(employe);
 
-            employe.Id = employes.Count > 0
-                ? employes.Max(e => e.Id) + 1
-                : 1;
-
-            employes.Add(employe);
-
-            SaveEmployees(employes);
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
 
         // GET: /Employe/Edit/5
-        [HttpGet("Edit/{id?}")]
-        public IActionResult Edit(int id)
+        [HttpGet("Edit/{id}")]
+        public async Task<IActionResult> Edit(int id)
         {
-            List<Employe> employees = GetEmployees();
-
-            Employe? employee = employees.FirstOrDefault(e => e.Id == id);
+            Employe? employee = await _context.Employes
+                .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
             {
@@ -116,9 +78,9 @@ namespace WebApplication1.Controllers
         }
 
         // POST: /Employe/Edit/5
-        [HttpPost("Edit/{id?}")]
+        [HttpPost("Edit/{id}")]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Employe employee)
+        public async Task<IActionResult> Edit(int id, Employe employee)
         {
             if (id != employee.Id)
             {
@@ -130,10 +92,8 @@ namespace WebApplication1.Controllers
                 return View(employee);
             }
 
-            List<Employe> employees = GetEmployees();
-
-            Employe? existingEmployee =
-                employees.FirstOrDefault(e => e.Id == id);
+            Employe? existingEmployee = await _context.Employes
+                .FirstOrDefaultAsync(e => e.Id == id);
 
             if (existingEmployee == null)
             {
@@ -146,18 +106,17 @@ namespace WebApplication1.Controllers
             existingEmployee.Salary = employee.Salary;
             existingEmployee.Designation = employee.Designation;
 
-            SaveEmployees(employees);
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
 
         // GET: /Employe/Delete/5
-        [HttpGet("Delete/{id?}")]
-        public IActionResult Delete(int id)
+        [HttpGet("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            List<Employe> employees = GetEmployees();
-
-            Employe? employee = employees.FirstOrDefault(e => e.Id == id);
+            Employe? employee = await _context.Employes
+                .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
             {
@@ -168,22 +127,21 @@ namespace WebApplication1.Controllers
         }
 
         // POST: /Employe/Delete/5
-        [HttpPost("Delete/{id?}")]
+        [HttpPost("Delete/{id}")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            List<Employe> employees = GetEmployees();
-
-            Employe? employee = employees.FirstOrDefault(e => e.Id == id);
+            Employe? employee = await _context.Employes
+                .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
             {
                 return NotFound();
             }
 
-            employees.Remove(employee);
+            _context.Employes.Remove(employee);
 
-            SaveEmployees(employees);
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
